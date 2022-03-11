@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Blinkendelys.no
+  </title>
+  <style>
+    body {
+      background-color:#8282bb;
+    }
+  </style>
+  <div id="myRandomDiv">
+  </div>
+  <script>
+    var randomLys = [
+      "BlinkeBlue.png",
+      "BlinkeCyan.png",
+      "BlinkePink.png",
+      "BlinkeRed.png",
+      "BlinkePurple.png",
+      "BlinkeGreen.png",
+      "BlinkeOrange.png",
+      "BlinkeYellow.png",
+    ];
+
+    function changeImage() {
+      console.log("LOG 2")
+
+      var img = document.getElementById("LightOff");
+      randomIndex = Math.ceil((Math.random() * randomLys.length - 1));
+      newText = randomLys[randomIndex];
+      orginal_img = newText;
+      img.src = orginal_img;
+      return false;
+    }
+
+  </script>
+
+</head>
+
+<body>
+
+  <H1 id="Overskrift"> Blinkendelys.com</H1>
+  <img id="LightOff" src="BlinkeWhite.png" alt="LightOff">
+  <button id="Fargeknapp" type="button" href="#" onclick="changeImage();"><img id="FargeknappBilde" src="Fargeknapp.png"alt="Fargeknapp"></button>
+  <button id="Hastighetknapp" type="button" href="#" onclick="timer();"><img id="HastighetknappBilde" src="Hastighetknapp.png" alt="Hastighetknapp"></button>
+
+  <script type="text/javascript">
+
+    var orginal_img;
+    var image = document.getElementById("LightOff");
+    var current_state = 0;
+
+    function BlinkeLys() {
+      console.log("BLINK", current_state, orginal_img)
+      if (current_state == 0) {
+        image.src = "BlinkeWhite.png";
+        current_state = 1;
+      } else {
+        image.src = orginal_img;
+        current_state = 0;
+      }
+    }
+
+    function timer() {
+      setInterval(BlinkeLys, 100);
+    }
+  </script>
+  <style>
+    #Overskrift {
+      font-style: italic;
+      text-align: center;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 100px;
+      font-weight: 700;
+
+    }
+
+    #LightOff {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      height: 50%;
+    }
+
+    #Fargeknapp {
+      display: block;
+      position: fixed;
+      margin-left: auto;
+      margin-right: 69%;
+      background: transparent;
+      border: none;
+
+    }
+
+    #Hastighetknapp {
+      display: block;
+      position: fixed;
+      margin-left: 69%;
+      margin-right: auto;
+      background: transparent;
+      border: none;
+    }
+  </style>
+</body>
+
+</html>
