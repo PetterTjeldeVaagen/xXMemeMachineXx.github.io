@@ -45,8 +45,8 @@
 
   <H1 id="Overskrift"> Blinkendelys.com</H1>
   <img id="LightOff" src="BlinkeWhite.png" alt="LightOff">
-  <button id="Fargeknapp" type="button" href="#" onclick="changeImage();"><img id="FargeknappBilde" src="Fargeknapp.png"alt="Fargeknapp"></button>
-  <button id="Hastighetknapp" type="button" href="#" onclick="timer();"><img id="HastighetknappBilde" src="Hastighetknapp.png" alt="Hastighetknapp"></button>
+  <button id="Fargeknapp" type="button" href="#" onclick="changeImage();"><img style=  width:100%; id="FargeknappBilde" src="Fargeknapp.png"alt="Fargeknapp"></button>
+  <button id="Hastighetknapp" type="button" href="#" onclick="timer();"><img style=  width:100%; id="HastighetknappBilde" src="Hastighetknapp.png" alt="Hastighetknapp"></button>
 
   <script type="text/javascript">
 
@@ -55,7 +55,6 @@
     var current_state = 0;
 
     function BlinkeLys() {
-      console.log("BLINK", current_state, orginal_img)
       if (current_state == 0) {
         image.src = "BlinkeWhite.png";
         current_state = 1;
@@ -76,8 +75,8 @@
       background: transparent;
       border: none;
       color: white;
-      font-size: 100px;
-      font-weight: 700;
+      font-weight:50%;
+      width:100%
 
     }
 
@@ -85,8 +84,8 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
-      width: 50%;
-      height: 50%;
+      width: 40%;
+      height: 40%;
     }
 
     #Fargeknapp {
