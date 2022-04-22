@@ -54,7 +54,8 @@
     var orginal_img = "BlinkeYellow.png";
     var image = document.getElementById("LightOff");
     var current_state = 0;
-
+    var teller = 0;
+   
     function BlinkeLys() {
       if (current_state == 0) {
         image.src = "BlinkeWhite.png";
@@ -62,9 +63,11 @@
       } else {
         image.src = orginal_img;
         current_state = 0;
+        teller = teller+1
+        document.title = `Blinkendelys.no blink: ${teller}`
       }
     }
-
+    
     function timer() {
       setInterval(BlinkeLys, 100);
     }
