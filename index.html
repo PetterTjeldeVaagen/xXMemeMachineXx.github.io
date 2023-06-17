@@ -19,16 +19,15 @@
 <body>
 
   <img src="Logo.png"  id="Overskrift"> </img>
-  <img id="LightOff" src="BlinkeBakgrunn.png" alt="LightOff">
-  <button id="Hastighetknapp" type="button" onclick="start();"><span>Start</span></button>
+  <p id="ModeName">Original</p>
 
-  <div class="dropdown">
-    <button hidden id ="dropdownBtn">Quirky Modes</button>
-    <div class="dropdown-options">
-      <a onclick="timerDisco();" >Disco Mode</a>
-    </div>
+  <div class="central">
+  <button id="ButtonLeft"  type="button" onclick="goLeft()"><img src="Arrow2.png" id="ButtonLeft" ></button>
+  <img id="LightOff" src="BlinkeBakgrunn.png">
+  <button id="ButtonRight" type="button" onclick="goRight()"><img src="Arrow1.png" id="ButtonRight"></button>
   </div>
-
+  
+  <button id="Hastighetknapp" type="button" onclick="start();"><span>Start</span></button>
 
 </body>
 

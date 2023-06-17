@@ -12,7 +12,7 @@
 
   #LightOff {
     background-color: white;
-    display: block;
+    display:inline-block;
     margin-left: auto;
     margin-right: auto;
     width: 20%;
@@ -42,46 +42,38 @@
     text-align: center;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
-  button span { position: relative; }
- 
-  .pressed { 
-    padding-top: 3px;
-    transform: translateY(4px);
-    box-shadow: 0 4px 0 rgb(183,0,0),
-      0 8px 6px rgba(0,0,0,.45);
+  
+  #ModeName{
+    text-align: center;
+    font-size:2rem;
+    color: white;
+    font-family: Avenir, Arial, sans-serif;
   }
+ 
+  #ButtonLeft{
+    cursor: pointer;
+    background-color: #007fff; 
+    display:inline-block;
+    border: none;
+    margin-left: 10% ;
+  }
+
+  #ButtonRight{
+    margin-right: 10% ;
+    cursor:pointer;
+    background-color: #007fff; 
+    display:inline-block;
+    border: none;
+  }
+
 
   body {
     background-color: #007fff;
   }
 
-  .dropdown {
-    display: inline-block;
-    position: relative;
-  }
-  
-  #dropdownBtn{
-    border:none;
-    border-radius:2px;
-    padding:15px 30px;
-    font-size:18px;
-    cursor:pointer;
-  }
-  
-  #dropdownBtn:hover{
-    background-color:#ddd;
-  }
-  
-  .dropdown-options {
-    display: none;
-    position: absolute;
-    overflow: auto;
-    background-color:#fff;
-    border-radius:2px;
-    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
-  }
-  
-  .dropdown:hover .dropdown-options {
-    display: block;
-  }
+  .central {
+  display: flex;
+  justify-content: center;
+}
+
   
