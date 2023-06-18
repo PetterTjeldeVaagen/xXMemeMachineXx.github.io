@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="BlinkeWhite.png">
-  <script src="script.js"></script>
+ 
 
   <title>
     Blinkendelys.com
@@ -26,9 +26,24 @@
   <img id="LightOff" src="BlinkeBakgrunn.png">
   <button id="ButtonRight" type="button" onclick="goRight()"><img src="Arrow1.png" id="ButtonRight"></button>
   </div>
-  
+
+  <div style="display:none;" class ="ColorPicker" id = "ColorPicker">
+    <ul id="RGBNavn">
+      <li><p>Red: <span id="redNumber"></span></p></li>
+      <li><p>Green: <span id="greenNumber"></span></p></li>
+      <li><p>Blue: <span id="blueNumber"></span></p></li>
+    </ul>
+    <ul id="RGBSlider">
+      <li><input type="range" min="1" max="255" value="0" class="slider" id="RedSlider"></li> 
+      <li><input type="range" min="1" max="255" value="0" class="slider" id="GreenSlider"></li>
+      <li><input type="range" min="1" max="255" value="0" class="slider" id="BlueSlider"></li>
+    </ul>
+  </div>  
+
   <button id="Hastighetknapp" type="button" onclick="start();"><span>Start</span></button>
 
 </body>
 
 </html>
+
+<script src="script.js"></script>
