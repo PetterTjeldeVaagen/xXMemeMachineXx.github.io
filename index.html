@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="BlinkeWhite.png">
  
 
   <title>
@@ -24,8 +23,30 @@
   <div class="central">
   <button id="ButtonLeft"  type="button" onclick="goLeft()"><img src="Arrow2.png" id="ButtonLeft" ></button>
   <img id="LightOff" src="BlinkeBakgrunn.png">
+  <div style="display:none;" class="TicTacToe" id = "TicTacToe">
+    <ul id="LightsTicTacToe">
+      <li><Ul id="RowA" class="TicTacToeRow">
+      <li><button class="btn" onclick="TicTacToeFunc('A1')"><img id = "A1" src = "BlinkeBakgrunnWhite.png"></button></li>
+      <li><button class="btn" onclick="TicTacToeFunc('A2')"><img id = "A2" src = "BlinkeBakgrunnWhite.png"></button></li>
+      <li><button class="btn" onclick="TicTacToeFunc('A3')"><img id = "A3" src = "BlinkeBakgrunnWhite.png"></button></li>
+      </Ul></li>
+
+      <li><Ul id="RowB" class="TicTacToeRow">
+      <li><button class="btn" onclick="TicTacToeFunc('B1')"><img id = "B1" src = "BlinkeBakgrunnWhite.png"></button></li>
+      <li><button class="btn" onclick="TicTacToeFunc('B2')"><img id = "B2" src = "BlinkeBakgrunnWhite.png"></button></li>
+      <li><button class="btn" onclick="TicTacToeFunc('B3')"><img id = "B3" src = "BlinkeBakgrunnWhite.png"></button></li>
+      </Ul></li>
+
+      <li><Ul id="RowC" class="TicTacToeRow">
+      <li><button class="btn" onclick="TicTacToeFunc('C1')"><img id = "C1" src = "BlinkeBakgrunnWhite.png"></button></li>
+      <li><button class="btn" onclick="TicTacToeFunc('C2')"><img id = "C2" src = "BlinkeBakgrunnWhite.png"></button></li>
+      <li><button class="btn" onclick="TicTacToeFunc('C3')"><img id = "C3" src = "BlinkeBakgrunnWhite.png"></button></li>
+      </Ul></li>
+    </ul>
+  </div>
   <button id="ButtonRight" type="button" onclick="goRight()"><img src="Arrow1.png" id="ButtonRight"></button>
   </div>
+  <p id="PlayerActiveText"></p>
 
   <div style="display:none;" class ="ColorPicker" id = "ColorPicker">
     <ul id="RGBNavn">
@@ -38,9 +59,12 @@
       <li><input type="range" min="1" max="255" value="0" class="slider" id="GreenSlider"></li>
       <li><input type="range" min="1" max="255" value="0" class="slider" id="BlueSlider"></li>
     </ul>
-  </div>  
+  </div>
+  
+  
 
   <button id="Hastighetknapp" type="button" onclick="start();"><span>Start</span></button>
+  <button style="display:none;" id="ResetButton" type="button" onclick="reset();"><span>Reset</span></button>
 
 </body>
 

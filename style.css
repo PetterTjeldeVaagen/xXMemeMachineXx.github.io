@@ -42,6 +42,31 @@
     text-align: center;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
+
+  #ResetButton{
+      border-radius: 50%; 
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100px;
+      height: 100px;
+      border: none;
+      color: white;
+      font-family: Avenir, Arial, sans-serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      background: red;
+      text-shadow: 0 3px 1px rgba(122,17,8,.8);
+      box-shadow: 0 8px 0 rgb(183,9,0), 
+        0 15px 20px rgba(0,0,0,.35);
+      text-transform: uppercase;
+      transition: .4s all ease-in;
+      outline: none; 
+      cursor: pointer;
+      text-align: center;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    
+  }
   
   #ModeName{
     text-align: center;
@@ -84,7 +109,87 @@
   text-align: center;
 }
 
+.TicTacToeRow{
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0 0px;
+  text-align: center;
+  border: none;
+}
 
+#PlayerActiveText{
+  text-align: center;
+  font-size:2rem;
+  color: white;
+  font-family: Avenir, Arial, sans-serif;
+}
+
+#A1{
+  list-style: none;
+  border: none;
+  width: 40%;
+  height: 40%;
+}
+#A2{
+  list-style: none;
+  border: none;
+  width: 40%;
+  height: 40%;
+}
+#A3{
+  list-style: none;
+  border: none;
+  width: 40%;
+  height: 40%;
+}
+
+#B1{
+  list-style: none;
+  border: none;
+  width: 40%;
+  height: 40%;
+}
+#B2{
+  list-style: none;
+  border: none;
+  width: 40%;
+  height: 40%;
+}
+#B3{
+  list-style: none;
+  border: none;
+  width: 40%;
+  height: 40%;
+}
+
+#C1{
+  list-style: none;
+  border: none;
+  width: 40%;
+  height: 40%;
+}
+#C2{
+  list-style: none;
+  border: none;
+  width: 40%;
+  height: 40%;
+}
+#C3{
+  list-style: none;
+  border: none;
+  width: 40%;
+  height: 40%;
+}
+
+#LightsTicTacToe{
+  list-style: none;
+  border: none;
+}
+
+.btn{
+  background-color: white;
+}
 
 #RGBNavn{
   list-style: none;
