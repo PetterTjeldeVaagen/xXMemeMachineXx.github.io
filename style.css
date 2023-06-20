@@ -191,6 +191,14 @@
   background-color: white;
 }
 
+#slogan{
+  list-style: none;
+  text-align: center;
+  color: white;
+  font-family: Avenir, Arial, sans-serif;
+  font-size: 2rem;
+}
+
 #RGBNavn{
   list-style: none;
   text-align: center;
