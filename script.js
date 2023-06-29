@@ -176,29 +176,19 @@
   }
 
 
-  function goRight(){
-    if(modeNumber==NumberOfModes){   
+  function sideButton(info){
+    if(modeNumber==NumberOfModes && info == 1){   
       modeNumber=0;
-    } else{
-      modeNumber=modeNumber+1;
+    } else if(modeNumber==0 && info == -1){
+      modeNumber=NumberOfModes;
+    }else{
+      modeNumber=modeNumber+info;
     }
     checkForStuff()
     ModeName.innerText = modusNavnListe[modeNumber].toLocaleString('en-US')
-    console.log(modeNumber);
-    
   }
 
-  function goLeft(){
-    
-    if(modeNumber==0){
-      modeNumber=NumberOfModes;
-    } else{
-      modeNumber=modeNumber-1;
-    }
-    checkForStuff()
-    ModeName.innerText = modusNavnListe[modeNumber].toLocaleString('en-US')
-    console.log(modeNumber);
-  }
+  
 
   function checkForStuff(){
     //makes sure all the visible is visible and vice versa
