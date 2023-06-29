@@ -217,6 +217,7 @@
       StartButton.style.display = "block";
     } else if(modeNumber == 2){
       lys.style.display = "block";
+      StartButton.style.display = "block";
       ColorPicker.style.display = "block";
     } else if(modeNumber == 3){
       TicTacToe.style.display="block";
