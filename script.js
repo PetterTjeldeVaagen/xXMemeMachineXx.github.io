@@ -185,6 +185,10 @@
       modeNumber=modeNumber+info;
     }
     checkForStuff()
+    if(modeNumber ==2){
+      start()
+    }
+    
     ModeName.innerText = modusNavnListe[modeNumber].toLocaleString('en-US')
   }
 
