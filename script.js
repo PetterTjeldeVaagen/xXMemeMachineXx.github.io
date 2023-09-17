@@ -63,7 +63,6 @@
       } else if(modeNumber == 1){
         check = 2;
         timerDisco();
-
       } else if(modeNumber == 2){
         check = 3;
         timerCustom();
@@ -72,12 +71,6 @@
         ActivePlayerText = "Player 1's turn";
       }
   }
-
-
-
-
-
-
 
   function BlinkeLys() {
     if(check == 1){
@@ -211,7 +204,7 @@
       StartButton.style.display = "block";
     } else if(modeNumber == 2){
       lys.style.display = "block";
-      StartButton.style.display = "block";
+      StartButton.style.display = "none";
       ColorPicker.style.display = "block";
     } else if(modeNumber == 3){
       TicTacToe.style.display="block";
