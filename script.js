@@ -53,10 +53,14 @@
 
   const lys = document.getElementById("LightOff")
   const StartButton = document.getElementById("Hastighetknapp")
+
+  var blinkeLysTimer;
+  var blinkeLysTimerDisco;
   
   
   function start(){
   farge.randomColor = Math.floor(Math.random()*16777215).toString(16);
+ 
       if(modeNumber == 0){
         check = 1;
         timer()
@@ -65,7 +69,7 @@
         timerDisco();
       } else if(modeNumber == 2){
         check = 3;
-        timerCustom();
+        timer();
       } else if(modeNumber == 3){
         check = 4;
         ActivePlayerText = "Player 1's turn";
@@ -74,34 +78,24 @@
 
   function BlinkeLys() {
     if(check == 1){
-    if (current_state == 0) {
-      
-      lys.style.backgroundColor = "white";
-      current_state = 1;
-    } else {
-      
-      lys.style.backgroundColor = "#" + farge.randomColor;
-      current_state = 0;
-      teller = teller+1
-      document.title = `Blinkendelys.no blink: ${teller}`
+      customColor =  "#" + farge.randomColor;
     }
-  }
-  }
-
-  function BlinkeLysCustom() {
     if(check == 3){
+      customColor =  customColor = "rgba("+red+","+ green+ "," + blue + ")";
+    }
+
     if (current_state == 0) {
       
       lys.style.backgroundColor = "white";
       current_state = 1;
     } else {
       
-      lys.style.backgroundColor = customColor ;
+      lys.style.backgroundColor = customColor;
       current_state = 0;
       teller = teller+1
       document.title = `Blinkendelys.no blink: ${teller}`
     }
-  }
+  
   }
 
   function BlinkeLysDisco() {
@@ -124,50 +118,37 @@
   }
   }
   
-  
-
   RedSlider.oninput = function() {
     RedOutput.innerHTML = this.value;
     red=this.value;
-    fargeLys();
   }
 
   GreenSlider.oninput = function() {
     GreenOutput.innerHTML = this.value;
     green=this.value;
-    fargeLys();
   }
 
   BlueSlider.oninput = function() {
     BlueOutput.innerHTML = this.value;
     blue=this.value;
-    fargeLys();
   }
 
-  function fargeLys(){
-    customColor = "rgba("+red+","+ green+ "," + blue + ")";
-    lys.style.backgroundColor= customColor;
-    console.log(customColor);
-  }
 
   function timer() {
-    if(check == 1){
-    setInterval(BlinkeLys, 100);
+    if(check == 1 || check == 3){
+    clearInterval(blinkeLysTimer);
+    clearInterval(blinkeLysTimerDisco);
+    blinkeLysTimer = setInterval(BlinkeLys, 100);
     }
   }
 
   function timerDisco() {
     if(check == 2){
-      setInterval(BlinkeLysDisco, 75);
+    clearInterval(blinkeLysTimerDisco);
+    clearInterval(blinkeLysTimer);
+    blinkeLysTimerDisco = setInterval(BlinkeLysDisco, 100);
     }
   }
-
-  function timerCustom() {
-    if(check == 3){
-    setInterval(BlinkeLysCustom, 100);
-    }
-  }
-
 
   function sideButton(info){
     if(modeNumber==NumberOfModes && info == 1){   
@@ -178,14 +159,8 @@
       modeNumber=modeNumber+info;
     }
     checkForStuff()
-    if(modeNumber ==2){
-      start()
-    }
-    
     ModeName.innerText = modusNavnListe[modeNumber].toLocaleString('en-US')
   }
-
-  
 
   function checkForStuff(){
     //makes sure all the visible is visible and vice versa
@@ -204,7 +179,7 @@
       StartButton.style.display = "block";
     } else if(modeNumber == 2){
       lys.style.display = "block";
-      StartButton.style.display = "none";
+      StartButton.style.display = "block";
       ColorPicker.style.display = "block";
     } else if(modeNumber == 3){
       TicTacToe.style.display="block";
@@ -328,19 +303,9 @@
   }
 
   function reset(){
-    console.log("reset");
-
     //resets variables and things like that
 
-    A1 = 0;
-    A2 = 0;
-    A3 = 0;
-    B1 = 0;
-    B2 = 0;
-    B3 = 0;
-    C1 = 0;
-    C2 = 0;
-    C3 = 0;
+    A1 = 0;A2 = 0;A3 = 0;B1 = 0;B2 = 0;B3 = 0;C1 = 0;C2 = 0;C3 = 0;
 
     document.getElementById("A1").style.backgroundColor="white";
     document.getElementById("A2").style.backgroundColor="white";
