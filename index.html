@@ -22,6 +22,7 @@
   <div class="central">
   <button id="ButtonLeft"  type="button" onclick="sideButton(-1)"><img src="Arrow2.png" id="ButtonLeft" ></button>
   <img id="LightOff" src="BlinkeBakgrunn.png">
+
   <div style="display:none;" class="TicTacToe" id = "TicTacToe">
     <ul id="LightsTicTacToe">
       <li><Ul id="RowA" class="TicTacToeRow">
@@ -43,8 +44,30 @@
       </Ul></li>
     </ul>
   </div>
+
+  <div style="display:none;" id="ClickerGame" class="TicTacToe">
+  
+  <p id="Clicks"></p>
+  <button onclick="clickerGameClick()" id="ClickerLight"><img id="Clicker" src="BlinkeBakgrunn.png"></button> 
+    <div>
+      <table id="ClickPowerList" style="width:100%">
+        <tr>
+          <th><p id="ClickingPowerText" class="ClickPowerItem">Cookies per click: </p></th>
+        </tr>
+        <tr>
+          <td><p class="ClickPowerItem" id="ClickingPowerPriceText">Price:</p></td>
+          <td><button onclick="UpgradeClickPower()" class="ClickPowerButton">Buy</button></td>
+        </tr>
+      </table>
+    </div>
+
+    <button onclick="reset()">Reset</button>
+
+  </div>
+  
   <button id="ButtonRight" type="button" onclick="sideButton(1)"><img src="Arrow1.png" id="ButtonRight"></button>
   </div>
+
   <p id="PlayerActiveText"></p>
 
   <div style="display:none;" class ="ColorPicker" id = "ColorPicker">
@@ -59,8 +82,6 @@
       <li><input type="range" min="1" max="255" value="0" class="slider" id="BlueSlider"></li>
     </ul>
   </div>
-  
-  
 
   <button id="Hastighetknapp" type="button" onclick="start();"><span>Start</span></button>
   <button style="display:none;" id="ResetButton" type="button" onclick="reset();"><span>Reset</span></button>

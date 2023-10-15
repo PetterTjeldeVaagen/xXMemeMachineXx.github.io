@@ -1,3 +1,42 @@
+#Clicks{
+    text-align: center;
+    font-size:2rem;
+    color: white;
+    font-family: Avenir, Arial, sans-serif;
+}
+
+#ClickerLight,#Clicker{
+  width: 30rem;
+  height: 30rem;
+}
+
+#ClickerLight{
+  border: none;
+  padding: 0;
+}
+
+#ClickPowerList{
+    text-align: center;
+    font-size:1.5rem;
+    color: black;
+    font-family: Avenir, Arial, sans-serif;
+    background-color: white;
+    border:.4rem solid black;
+    padding: .2rem;
+}
+
+th, td {
+  border:.3rem solid black;
+  padding: .1rem;
+}
+
+.ClickPowerButton{
+  width: 15rem;
+  height: 5.2rem;
+  font-size:1.5rem;
+  color: black;
+  font-family: Avenir, Arial, sans-serif;
+}
 
 
 

@@ -1,4 +1,3 @@
-
   var current_state = 0;
   var teller = 0;
   var check = 0;
@@ -9,8 +8,8 @@
 
   //ModeChangerVariables
   var modeNumber = 0;
-  var NumberOfModes = 3; //antall moduser -1
-  const modusNavnListe = ["Original", "Disco Mode", "Custom Color", "Tic Tac Toe"]
+  var NumberOfModes = 4; //antall moduser -1
+  const modusNavnListe = ["Original", "Disco Mode", "Custom Color", "Tic Tac Toe", "Clicker Game(work in progress, blinks may be reset)"]
   var modusNavn;
 
   //TicTacToeVariables
@@ -55,6 +54,21 @@
 
   const lys = document.getElementById("LightOff")
   const StartButton = document.getElementById("Hastighetknapp")
+
+ 
+
+  //Clicker variables ClickingPowerText
+  const ClickerGame = document.getElementById("ClickerGame")
+  const lysClickable = document.getElementById("ClickerLight")
+  const ClickAmount = document.getElementById("Clicks")
+  const ClickPowerText = document.getElementById("ClickingPowerText")
+  const ClickingPowerPriceText = document.getElementById("ClickingPowerPriceText")
+  
+
+  let clicks;
+  let priceForClickPowerUpgrade;
+  var autoClickerAmount;
+  var autoClickerStrength;
   
   
   function start(){
@@ -71,6 +85,9 @@
       } else if(modeNumber == 3){
         check = 4;
         ActivePlayerText = "Player 1's turn";
+      } else if(modeNumber == 4){
+        check = 5;
+        clickerGameLoad();
       }
   }
 
@@ -152,7 +169,7 @@
       modeNumber=modeNumber+info;
     }
     checkForStuff()
-    if(modeNumber ==2){
+    if(modeNumber ==2 || modeNumber ==4){
       start()
     }
     clearInterval(timerVar);
@@ -169,6 +186,7 @@
     TicTacToe.style.display="none";
     ActivePlayerText.style.display="none";
     ResetButton.style.display="none";
+    ClickerGame.style.display="none";
 
     if(modeNumber == 0){
       lys.style.display = "block";
@@ -184,6 +202,8 @@
       TicTacToe.style.display="block";
       ActivePlayerText.style.display="block";
       ResetButton.style.display="block";
+    }else if(modeNumber == 4){
+      ClickerGame.style.display="block";
     }
     
   }
@@ -331,4 +351,100 @@
     playerActive = 1;
     ActivePlayerText.innerHTML = "Player 1's turn";
     TicTacToeTeller = 0;
+
+    if(modeNumber == 4){
+      localStorage.TotalClicks=0;
+      localStorage.ClickPower=1;
+      localStorage.ClickPowerUpPrice=10;
+      updateText()
+    }
+  }
+
+  function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+
+
+  //Clicker game features
+
+  function clickerGameClick(){
+    if(localStorage.TotalClicks){ //blink + legger til antall blink
+      localStorage.TotalClicks = (Number(localStorage.TotalClicks) + Number(localStorage.ClickPower)).toFixed(2);
+      lysClickable.style.backgroundColor = "yellow";
+      delay(100).then(() => lysClickable.style.backgroundColor = "white");
+    }else{ //hvis spilleren ikke har spillt før
+      localStorage.setItem("TotalClicks", 0);
+      ClickAmount.innerHTML= localStorage.TotalClicks;
+    }
+    updateText();
+  }
+
+  function UpgradeClickPower(){ //oppgradere click poweren
+    if (localStorage.ClickPowerUpPrice) {
+      if(Number(localStorage.ClickPowerUpPrice)<= Number(localStorage.TotalClicks)){ //sjekker at spilleren har råd til upgrade
+        localStorage.TotalClicks=(Number(localStorage.TotalClicks)-Number(localStorage.ClickPowerUpPrice)).toFixed(2) //fjerner "blinks fra baneken"
+        localStorage.ClickPower = (Number(localStorage.ClickPower)*1.2).toFixed(2)//øker clickpower //ikke ferdig
+        localStorage.ClickPowerUpPrice=(Number(localStorage.ClickPowerUpPrice)*1.3).toFixed(2); //øker prisen
+        ClickPowerText.innerHTML = "Cookies per click: " + localStorage.ClickPower; //opdater text 
+        ClickingPowerPriceText.innerHTML = "Price: " + localStorage.ClickPowerUpPrice;
+        updateText()
+      }
+    }else{ //hvis spilleren ikke har spillt før
+      localStorage.setItem("ClickPowerUpPrice", 10);
+      ClickAmount.innerHTML= localStorage.TotalClicks;
+    }
+    
+  }
+
+  function clickerGameLoad(){ //start when open the clicker game
+    updateText();
+    ClickPowerText.innerHTML = "Cookies per click: " + localStorage.ClickPower;
+    ClickingPowerPriceText.innerHTML = "Price: " + localStorage.ClickPowerUpPrice;
+    if (typeof(Storage) !== "undefined") {
+
+    } else {
+      window.alert("No clicker for you! 😂");
+      start();
+      modeNumber = 1;
+    } 
+  }
+
+  function updateText(){
+    ClickAmount.innerHTML= localStorage.TotalClicks + " Blinks";
+    ClickPowerText.innerHTML = "Cookies per click: " + localStorage.ClickPower;
+    ClickingPowerPriceText.innerHTML = "Price: " + localStorage.ClickPowerUpPrice;
+
+    if(localStorage.TotalClicks < Math.pow(10,6)){
+      ClickAmount.innerHTML= localStorage.TotalClicks + " Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,6) && localStorage.TotalClicks < Math.pow(10,9)){ 
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,6)).toFixed(2) + " Million Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,9) && localStorage.TotalClicks < Math.pow(10,12)){
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,9)).toFixed(2) + " Billion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,12) && localStorage.TotalClicks < Math.pow(10,15)){
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,12)).toFixed(2) + " Trillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,15) && localStorage.TotalClicks < Math.pow(10,18)){ 
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,15)).toFixed(2) + " Quadrillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,18) && localStorage.TotalClicks < Math.pow(10,21)){
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,18)).toFixed(2) + " Quintillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,21) && localStorage.TotalClicks < Math.pow(10,24)){
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,21)).toFixed(2) + " Sextillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,24) && localStorage.TotalClicks < Math.pow(10,27)){ 
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,24)).toFixed(2) + " Septillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,27) && localStorage.TotalClicks < Math.pow(10,30)){
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,27)).toFixed(2) + " Octillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,30) && localStorage.TotalClicks < Math.pow(10,33)){
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,30)).toFixed(2) + " nonillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,33) && localStorage.TotalClicks < Math.pow(10,36)){ 
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,33)).toFixed(2) + " Decilillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,36) && localStorage.TotalClicks < Math.pow(10,39)){
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,36)).toFixed(2) + " Undecilillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,39) && localStorage.TotalClicks < Math.pow(10,42)){
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,39)).toFixed(2) + " Duodecilillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,42) && localStorage.TotalClicks < Math.pow(10,45)){ 
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,42)).toFixed(2) + " Tredecilillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,45) && localStorage.TotalClicks < Math.pow(10,48)){
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,45)).toFixed(2) + " Quattuordecilillion Blinks";
+    }else if(localStorage.TotalClicks > Math.pow(10,48) && localStorage.TotalClicks < Math.pow(10,51)){
+      ClickAmount.innerHTML= (localStorage.TotalClicks/Math.pow(10,48)).toFixed(2) + " Quindecilillion Blinks";
+    }
   }
