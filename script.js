@@ -410,7 +410,7 @@
     if (!localStorage.ClickPowerUpPrice) {localStorage.ClickPowerUpPrice=10;}
     if (!localStorage.TotalClicks) {localStorage.TotalClicks=0;}
     if (!localStorage.ClickPower) {localStorage.ClickPower=1;}
-
+    updateText()
   }
 
   function updateText(){
