@@ -398,7 +398,7 @@
 
   function clickerGameLoad(){ //start when open the clicker game
     updateText();
-    ClickPowerText.innerHTML = "Cookies per click: " + localStorage.ClickPower;
+    ClickPowerText.innerHTML = "Blinks per click: " + localStorage.ClickPower;
     ClickingPowerPriceText.innerHTML = "Price: " + localStorage.ClickPowerUpPrice;
     if (typeof(Storage) !== "undefined") {
 
