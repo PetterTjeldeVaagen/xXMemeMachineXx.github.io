@@ -8,7 +8,7 @@
 
   //ModeChangerVariables
   var modeNumber = 0;
-  var NumberOfModes = 4; //antall moduser -1
+  var NumberOfModes = 3; //antall moduser -1
   const modusNavnListe = ["Original", "Disco Mode", "Custom Color", "Tic Tac Toe", "Clicker Game(work in progress, blinks may be reset)"]
   var modusNavn;
 
@@ -385,7 +385,7 @@
         localStorage.TotalClicks=(Number(localStorage.TotalClicks)-Number(localStorage.ClickPowerUpPrice)).toFixed(2) //fjerner "blinks fra baneken"
         localStorage.ClickPower = (Number(localStorage.ClickPower)*1.2).toFixed(2)//øker clickpower //ikke ferdig
         localStorage.ClickPowerUpPrice=(Number(localStorage.ClickPowerUpPrice)*1.3).toFixed(2); //øker prisen
-        ClickPowerText.innerHTML = "Cookies per click: " + localStorage.ClickPower; //opdater text 
+        ClickPowerText.innerHTML = "Blinks per click: " + localStorage.ClickPower; //opdater text 
         ClickingPowerPriceText.innerHTML = "Price: " + localStorage.ClickPowerUpPrice;
         updateText()
       }
@@ -415,7 +415,7 @@
 
   function updateText(){
     ClickAmount.innerHTML= localStorage.TotalClicks + " Blinks";
-    ClickPowerText.innerHTML = "Cookies per click: " + localStorage.ClickPower;
+    ClickPowerText.innerHTML = "Blinks per click: " + localStorage.ClickPower;
     ClickingPowerPriceText.innerHTML = "Price: " + localStorage.ClickPowerUpPrice;
 
     if(localStorage.TotalClicks < Math.pow(10,6)){

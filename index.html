@@ -48,20 +48,34 @@
   <div style="display:none;" id="ClickerGame" class="TicTacToe">
   
   <p id="Clicks"></p>
+<div id="ClickerGameDiv">
+  <div>
+    <table id="ClickPowerList" style="width:100%">
+      <tr>
+        <th>Hire Indian Clicker:</th>
+        <th><button class="ClickPowerButton">Buy</button></th>
+        <th>Blinks Per Second:</th>
+      </tr>
+      
+    </table>
+</div>
+
   <button onclick="clickerGameClick()" id="ClickerLight"><img id="Clicker" src="BlinkeBakgrunn.png"></button> 
-    <div>
+
+  <div>
       <table id="ClickPowerList" style="width:100%">
         <tr>
           <th><p id="ClickingPowerText" class="ClickPowerItem">Blinks per click: </p></th>
+          <th><p class="ClickPowerItem">Upgrade Click Power</p></th>
         </tr>
         <tr>
           <td><p class="ClickPowerItem" id="ClickingPowerPriceText">Price:</p></td>
           <td><button onclick="UpgradeClickPower()" class="ClickPowerButton">Buy</button></td>
         </tr>
       </table>
-    </div>
-
-    <button onclick="reset()">Reset</button>
+  </div>
+</div>
+  <button onclick="reset()">Reset</button>
 
   </div>
   
