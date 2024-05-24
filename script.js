@@ -9,7 +9,7 @@
   //ModeChangerVariables
   var modeNumber = 0;
   var NumberOfModes = 3; //antall moduser -1
-  const modusNavnListe = ["Original", "Disco Mode", "Custom Color", "Tic Tac Toe", "Clicker Game(work in progress, blinks may be reset)"]
+  const modusNavnListe = ["Original", "Disco Mode", "Custom Color", "Bondesjakk", "Clicker Game(work in progress, blinks may be reset)"]
   var modusNavn;
 
   //TicTacToeVariables
